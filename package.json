@@ -1,0 +1,8 @@
+{
+    "name" : "nodeLunch",
+    "description" : "Node.js lunch selector",
+    "version" : "0.0.1",
+    "private" : false,
+    "dependencies": {
+    }
+}
