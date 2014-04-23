@@ -84,6 +84,9 @@ if (process.argv.length > 2) { //we have command line arguments
 				case "--location":
 					location = process.argv[index+1].replace(/ /g, "%20");
 					break;
+                case "--choice":
+                    choice = process.argv[index+1];
+                    break;
             }
         }
     });
