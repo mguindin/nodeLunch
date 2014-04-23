@@ -2,6 +2,7 @@
 
 var http = require('http'),
 	fs = require('fs'),
+    path = require('path'),
 	yelp_url = "http://api.yelp.com/business_review_search?",
 	weather_url = "",
 	cuisine = "random",
@@ -17,7 +18,7 @@ function radius(){
 
 function buildYelpUrl(callback){
 	var yelp_key = "";
-	fs.readFile('./yelp_key', 'utf8', function(err, data){
+	fs.readFile(path.resolve(__dirname, 'yelp_key'), 'utf8', function(err, data){
 		if (err) {
 			console.log("yelp_key file doesn't exist! " + err);
 			process.exit(1);
