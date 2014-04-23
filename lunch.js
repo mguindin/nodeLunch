@@ -1,7 +1,7 @@
 // Node.js lunch selector
 
 var http = require('http'),
-	fs = require('fs'),
+    fs = require('fs'),
     path = require('path'),
 	yelp_url = "http://api.yelp.com/business_review_search?",
 	weather_url = "",
@@ -25,11 +25,11 @@ function buildYelpUrl(callback){
 		} else {
 			yelp_key = data.replace("\n", "");
 		}
-		var url = yelp_url + 
-			"term=" + cuisine + 
+		var url = yelp_url +
+			"term=" + cuisine +
 			"&location=" + location +
 			"&radius=" + radius() +
-			"&limit=20" + 
+			"&limit=20" +
 			"&ywsid=" + yelp_key +
 			"&category=restaurants";
 		callback(url);
@@ -42,7 +42,7 @@ function processReview(element, index, array){
 
 function processData(data, choice){
 	var restaurant = data.businesses[choice];
-	console.log("You will be having " + restaurant.name + 
+	console.log("You will be having " + restaurant.name +
 		", which is located at " + restaurant.address1 + ".");
 	rating = restaurant.avg_rating;
 	console.log(restaurant.name + " has an average rating of " + rating);
@@ -82,18 +82,18 @@ if (process.argv.length > 2) { //we have command line arguments
 					cuisine = process.argv[index+1];
 					break;
 				case "--location":
-					location = process.argv[index+1];
+					location = process.argv[index+1].replace(/ /g, "%20");
 					break;
-			}
-		}
-	});
+            }
+        }
+    });
 }
 
 if (debug) {
-	console.log("Cuisine: " + cuisine);
-	console.log("Location: " + location);
-	console.log("Choice: " + choice);
-	buildYelpUrl(console.log);
+    console.log("Cuisine: " + cuisine);
+    console.log("Location: " + location);
+    console.log("Choice: " + choice);
+    buildYelpUrl(console.log);
 } else {
-	buildYelpUrl(processRequest);
+    buildYelpUrl(processRequest);
 }
