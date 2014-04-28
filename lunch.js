@@ -11,9 +11,10 @@ var http = require('http'),
 	location = "10021", //default for now
 	choice = 1,
 	debug = false;
+    r = "0.5";
 
 function radius(){
-	return "0.5"; //default to half mile for now
+	return r;
 }
 
 function buildYelpUrl(callback){
@@ -87,6 +88,8 @@ if (process.argv.length > 2) { //we have command line arguments
                 case "--choice":
                     choice = process.argv[index+1];
                     break;
+                case "--radius":
+                    r = process.argv[index+1];
             }
         }
     });
